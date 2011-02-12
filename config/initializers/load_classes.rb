@@ -1,4 +1,4 @@
-require Rails.root.join "lib", "custom_const_missing"
-CustomConstMissing.hook!
-CustomConstMissing.map :Comment, "app/models/post"
-CustomConstMissing.map :CommentsController, "app/controllers/posts_controller"
+ActionDispatch::Callbacks.before do
+  require_dependency "app/models/post"
+  require_dependency "app/controllers/posts_controller"
+end
